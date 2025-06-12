@@ -78,7 +78,7 @@
     }
 
     .header h1 {
-      font-family: 'Dancing Script', cursive;
+      font-family: 'Poppins', sans-serif;
       font-size: 3.5rem;
       color: white;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -115,7 +115,7 @@
     }
 
     .card h2 {
-      font-family: 'Dancing Script', cursive;
+      font-family: 'Poppins', sans-serif;
       font-size: 2.2rem;
       color: #764ba2;
       margin-bottom: 20px;
@@ -160,7 +160,7 @@
     }
 
     .counter h2 {
-      font-family: 'Dancing Script', cursive;
+      font-family: 'Poppins', sans-serif;
       font-size: 2.5rem;
       color: #764ba2;
       margin-bottom: 30px;
@@ -253,7 +253,7 @@
     }
 
     .modal h3 {
-      font-family: 'Dancing Script', cursive;
+      font-family: 'Poppins', sans-serif;
       font-size: 2.5rem;
       color: #764ba2;
       margin-bottom: 20px;
@@ -300,6 +300,165 @@
       }
     }
 
+    /* Carrossel de Fotos */
+    .photo-carousel {
+      margin: 60px 0;
+      animation: fadeInUp 1.4s ease-out;
+    }
+
+    .photo-carousel h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3rem;
+      color: white;
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .carousel-info {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      padding: 30px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      position: relative;
+      text-align: center;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .slide-caption {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      backdrop-filter: blur(10px);
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: #764ba2;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .carousel-btn:hover {
+      background: white;
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .carousel-btn-prev {
+      left: 10px;
+    }
+
+    .carousel-btn-next {
+      right: 10px;
+    }
+
+    .carousel-counter {
+      text-align: center;
+      margin-top: 15px;
+      color: #764ba2;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .carousel-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+      max-width: 100%;
+    }
+
+    .indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(118, 75, 162, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .indicator.active,
+    .indicator:hover {
+      background: #764ba2;
+      transform: scale(1.2);
+    }
+
+    /* Efeito de zoom nas imagens */
+    .carousel-slide img:hover {
+      transform: scale(1.02);
+      transition: transform 0.3s ease;
+    }
+
+    /* Auto-play indicator animation */
+    .indicator.active {
+      animation: indicatorPulse 3s infinite;
+    }
+
+    @keyframes indicatorPulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(118, 75, 162, 0.7);
+      }
+
+      70% {
+        box-shadow: 0 0 0 10px rgba(118, 75, 162, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(118, 75, 162, 0);
+      }
+    }
+
     /* Responsivo */
     @media (max-width: 768px) {
       .header h1 {
@@ -318,6 +477,41 @@
       .time-number {
         font-size: 2rem;
       }
+
+      .photo-carousel h2 {
+        font-size: 2.2rem;
+      }
+
+      .carousel-container {
+        padding: 20px;
+        margin: 0 10px;
+        max-width: 95%;
+      }
+
+      .carousel-slide img {
+        height: 400px;
+      }
+
+      .carousel-indicators {
+        gap: 6px;
+      }
+
+      .indicator {
+        width: 8px;
+        height: 8px;
+      }
+
+      .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+
+      .slide-caption {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+        bottom: 15px;
+      }
     }
   </style>
 </head>
@@ -330,8 +524,113 @@
   <div class="container">
     <!-- Cabeçalho -->
     <div class="header">
-      <h1>Para o Amor da Minha Vida</h1>
-      <p>Um site especial criado com todo meu amor ❤️</p>
+      <h1>Para o Amor da Minha Vida ❤️</h1>
+
+    </div>
+
+    <!-- Carrossel de Fotos -->
+    <div class="photo-carousel">
+      <h2>Nossos Momentos Especiais</h2>
+      <p class="carousel-info">📸 14 fotos especiais • Use as setas ou clique nos pontos para navegar</p>
+      <div class="carousel-container">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide active">
+            <img src="images/IMG-20250611-WA0074.jpg" alt="Momento especial 1" loading="lazy">
+
+          </div>
+
+          <div class="carousel-slide">
+            <img src="images/IMG-20250611-WA0076.jpg" alt="Momento especial 2" loading="lazy">
+
+          </div>
+
+          <div class="carousel-slide">
+            <img src="images/IMG-20250611-WA0078.jpg" alt="Momento especial 3" loading="lazy">
+
+          </div>
+
+          <div class="carousel-slide">
+            <img src="images/IMG-20250611-WA0079.jpg" alt="Momento especial 4" loading="lazy">
+
+          </div>
+
+          <div class="carousel-slide">
+            <img src="images/IMG-20250611-WA0080.jpg" alt="Momento especial 5" loading="lazy">
+
+          </div>
+
+          <div class="carousel-slide">
+            <img src="images/IMG-20250611-WA0081.jpg" alt="Momento especial 6" loading="lazy">
+
+          </div>
+
+          <div class="carousel-slide">
+            <img src="images/IMG-20250611-WA0082.jpg" alt="Momento especial 7" loading="lazy">
+
+          </div>
+
+          <div class="carousel-slide">
+            <img src="images/IMG-20250611-WA0083.jpg" alt="Momento especial 8" loading="lazy">
+
+          </div>
+
+          <div class="carousel-slide">
+            <img src="images/img1.jpg" alt="Momento especial 9" loading="lazy">
+
+          </div>
+
+          <div class="carousel-slide">
+            <img src="images/img2.jpg" alt="Momento especial 10" loading="lazy">
+
+          </div>
+
+          <div class="carousel-slide">
+            <img src="images/img4.jpg" alt="Momento especial 12" loading="lazy">
+
+          </div>
+
+          <div class="carousel-slide">
+            <img src="images/img5.jpg" alt="Momento especial 13" loading="lazy">
+
+          </div>
+
+          <div class="carousel-slide">
+            <img src="images/img6.jpg" alt="Momento especial 14" loading="lazy">
+
+          </div>
+        </div>
+
+        <!-- Navegação do carrossel -->
+        <button class="carousel-btn carousel-btn-prev" onclick="changeSlide(-1)">
+          <span>❮</span>
+        </button>
+        <button class="carousel-btn carousel-btn-next" onclick="changeSlide(1)">
+          <span>❯</span>
+        </button>
+
+        <!-- Contador e Indicadores -->
+        <div class="carousel-counter">
+          <span id="currentPhotoNumber">1</span> / <span id="totalPhotos">14</span>
+        </div>
+
+        <!-- Indicadores -->
+        <div class="carousel-indicators">
+          <span class="indicator active" onclick="currentSlide(1)"></span>
+          <span class="indicator" onclick="currentSlide(2)"></span>
+          <span class="indicator" onclick="currentSlide(3)"></span>
+          <span class="indicator" onclick="currentSlide(4)"></span>
+          <span class="indicator" onclick="currentSlide(5)"></span>
+          <span class="indicator" onclick="currentSlide(6)"></span>
+          <span class="indicator" onclick="currentSlide(7)"></span>
+          <span class="indicator" onclick="currentSlide(8)"></span>
+          <span class="indicator" onclick="currentSlide(9)"></span>
+          <span class="indicator" onclick="currentSlide(10)"></span>
+          <span class="indicator" onclick="currentSlide(11)"></span>
+          <span class="indicator" onclick="currentSlide(12)"></span>
+          <span class="indicator" onclick="currentSlide(13)"></span>
+          <span class="indicator" onclick="currentSlide(14)"></span>
+        </div>
+      </div>
     </div>
 
     <!-- Contador de tempo juntos -->
@@ -362,25 +661,12 @@
       <div class="card">
         <h2>Razões para Te Amar</h2>
         <ul>
-          <li>Seu sorriso ilumina meus dias</li>
-          <li>Sua risada é minha música favorita</li>
           <li>Você me faz querer ser uma pessoa melhor</li>
           <li>Cada momento ao seu lado é especial</li>
           <li>Você é minha melhor amiga e amor da vida</li>
-          <li>Sua forma carinhosa de cuidar de mim</li>
+          <li>Sua forma carinhosa de cuidar de mim </li>
           <li>Como você me apoia em tudo</li>
-          <li>Você torna cada dia uma aventura</li>
         </ul>
-      </div>
-
-      <div class="card">
-        <h2>Nossos Momentos Especiais</h2>
-        <p>💕 <strong>Primeiro encontro:</strong> Ainda lembro como se fosse ontem</p>
-        <p>🌹 <strong>Primeiro "eu te amo":</strong> As palavras mais bonitas já ditas</p>
-        <p>💍 <strong>Nosso noivado:</strong> O dia que selamos nosso futuro juntos</p>
-        <p>🏠 <strong>Nossa casa:</strong> Onde construímos nosso lar</p>
-        <p>✈️ <strong>Nossas viagens:</strong> Aventuras que vivemos lado a lado</p>
-        <p>🎉 <strong>Comemorações:</strong> Cada data especial é mais especial com você</p>
       </div>
 
       <div class="card">
@@ -391,15 +677,13 @@
           <li>Envelhecermos de mãos dadas</li>
           <li>Continuarmos rindo juntos todos os dias</li>
           <li>Realizarmos todos os nossos sonhos</li>
-          <li>Criarmos milhões de memórias especiais</li>
           <li>Sermos felizes para sempre</li>
         </ul>
       </div>
 
       <div class="card">
         <h2>Para Você, Meu Amor</h2>
-        <p>Este site foi criado especialmente para você, com todo meu carinho e dedicação. Cada linha de código foi
-          escrita pensando no quanto você é especial para mim.</p>
+        <p>Este site foi criado especialmente para você, com todo meu carinho e dedicação.</p>
         <p>Você não é apenas minha esposa, é minha companheira de vida, minha melhor amiga, minha inspiração diária.</p>
         <p>Obrigado por estar ao meu lado em cada desafio, por acreditar em meus sonhos e por tornar minha vida muito
           mais colorida e feliz.</p>
@@ -408,11 +692,7 @@
     </div>
 
     <!-- Botão especial -->
-    <div class="special-button">
-      <button class="btn-love" onclick="showSurprise()">
-        Clique para uma Surpresa Especial! 💕
-      </button>
-    </div>
+
   </div>
 
   <!-- Modal de surpresa -->
@@ -488,6 +768,111 @@
     // Inicializar alguns corações na tela
     for (let i = 0; i < 5; i++) {
       setTimeout(createHeart, i * 1000);
+    }
+
+    // Carrossel de Fotos
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    const totalSlides = slides.length;
+
+    function updateCarousel() {
+      const track = document.getElementById('carouselTrack');
+      const translateX = -currentSlideIndex * 100;
+      track.style.transform = `translateX(${translateX}%)`;
+
+      // Atualizar indicadores
+      indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentSlideIndex);
+      });
+
+      // Atualizar contador
+      const photoNumber = document.getElementById('currentPhotoNumber');
+      if (photoNumber) {
+        photoNumber.textContent = currentSlideIndex + 1;
+      }
+    }
+
+    function changeSlide(direction) {
+      currentSlideIndex += direction;
+
+      if (currentSlideIndex >= totalSlides) {
+        currentSlideIndex = 0;
+      } else if (currentSlideIndex < 0) {
+        currentSlideIndex = totalSlides - 1;
+      }
+
+      updateCarousel();
+    }
+
+    function currentSlide(slideIndex) {
+      currentSlideIndex = slideIndex - 1;
+      updateCarousel();
+    }
+
+    // Auto-play do carrossel (opcional)
+    function autoPlayCarousel() {
+      changeSlide(1);
+    }
+
+    // Ativar auto-play a cada 5 segundos
+    setInterval(autoPlayCarousel, 5000);
+
+    // Pausar auto-play quando mouse estiver sobre o carrossel
+    const carouselContainer = document.querySelector('.carousel-container');
+    let autoPlayInterval;
+
+    function startAutoPlay() {
+      autoPlayInterval = setInterval(autoPlayCarousel, 5000);
+    }
+
+    function stopAutoPlay() {
+      clearInterval(autoPlayInterval);
+    }
+
+    if (carouselContainer) {
+      carouselContainer.addEventListener('mouseenter', stopAutoPlay);
+      carouselContainer.addEventListener('mouseleave', startAutoPlay);
+
+      // Iniciar auto-play
+      startAutoPlay();
+    }
+
+    // Suporte para navegação por teclado
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowLeft') {
+        changeSlide(-1);
+      } else if (event.key === 'ArrowRight') {
+        changeSlide(1);
+      }
+    });
+
+    // Suporte para touch/swipe em dispositivos móveis
+    let startX = 0;
+    let endX = 0;
+
+    carouselContainer?.addEventListener('touchstart', function (event) {
+      startX = event.touches[0].clientX;
+    });
+
+    carouselContainer?.addEventListener('touchend', function (event) {
+      endX = event.changedTouches[0].clientX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = startX - endX;
+
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          // Swipe left - próximo slide
+          changeSlide(1);
+        } else {
+          // Swipe right - slide anterior
+          changeSlide(-1);
+        }
+      }
     }
   </script>
 </body>
