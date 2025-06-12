@@ -91,6 +91,95 @@
       font-weight: 300;
     }
 
+    /* Player de Música */
+    .music-player {
+      margin-top: 30px;
+      text-align: center;
+      animation: fadeInUp 1.5s ease-out;
+    }
+
+    .music-btn {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50px;
+      padding: 15px 30px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 auto 15px;
+      min-width: 250px;
+      justify-content: center;
+    }
+
+    .music-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .music-btn.playing {
+      background: rgba(255, 107, 107, 0.2);
+      border-color: rgba(255, 107, 107, 0.5);
+      animation: musicPulse 2s infinite;
+    }
+
+    @keyframes musicPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4);
+      }
+
+      50% {
+        box-shadow: 0 0 0 15px rgba(255, 107, 107, 0);
+      }
+    }
+
+    .music-info {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
+      font-style: italic;
+      opacity: 0.8;
+    }
+
+    #musicIcon {
+      font-size: 1.3rem;
+      animation: musicNote 2s ease-in-out infinite;
+    }
+
+    .music-btn.playing #musicIcon {
+      animation: musicNotePlaying 0.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes musicNote {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    @keyframes musicNotePlaying {
+      0% {
+        transform: scale(1) rotate(-5deg);
+      }
+
+      100% {
+        transform: scale(1.2) rotate(5deg);
+      }
+    }
+
     /* Cards principais */
     .cards-container {
       display: grid;
@@ -512,6 +601,21 @@
         padding: 8px 15px;
         bottom: 15px;
       }
+
+      /* Player de música responsivo */
+      .music-btn {
+        min-width: 200px;
+        padding: 12px 20px;
+        font-size: 1rem;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .music-info {
+        font-size: 0.85rem;
+        text-align: center;
+        margin-top: 10px;
+      }
     }
   </style>
 </head>
@@ -526,6 +630,16 @@
     <div class="header">
       <h1>Para o Amor da Minha Vida ❤️</h1>
 
+      <!-- Player de Música -->
+      <div class="music-player">
+        <button class="music-btn" id="musicToggle" onclick="toggleMusic()">
+          <span id="musicIcon">🎵</span>
+          <span id="musicText">Tocar Música Romântica</span>
+        </button>
+        <div class="music-info" id="musicInfo">
+          <span id="currentSong">Clique para ouvir nossa trilha sonora ❤️</span>
+        </div>
+      </div>
     </div>
 
     <!-- Carrossel de Fotos -->
@@ -535,51 +649,51 @@
       <div class="carousel-container">
         <div class="carousel-track" id="carouselTrack">
           <div class="carousel-slide active">
-            <img src="./images/IMG-20250611-WA0074.jpg" alt="Momento especial 1" loading="lazy">
+            <img src="images/IMG-20250611-WA0074.jpg" alt="Momento especial 1" loading="lazy">
           </div>
 
           <div class="carousel-slide">
-            <img src="./images/IMG-20250611-WA0076.jpg" alt="Momento especial 2" loading="lazy">
+            <img src="images/IMG-20250611-WA0076.jpg" alt="Momento especial 2" loading="lazy">
           </div>
 
           <div class="carousel-slide">
-            <img src="./images/IMG-20250611-WA0078.jpg" alt="Momento especial 3" loading="lazy">
+            <img src="images/IMG-20250611-WA0078.jpg" alt="Momento especial 3" loading="lazy">
           </div>
 
           <div class="carousel-slide">
-            <img src="./images/IMG-20250611-WA0079.jpg" alt="Momento especial 4" loading="lazy">
+            <img src="images/IMG-20250611-WA0079.jpg" alt="Momento especial 4" loading="lazy">
           </div>
 
           <div class="carousel-slide">
-            <img src="./images/IMG-20250611-WA0080.jpg" alt="Momento especial 5" loading="lazy">
+            <img src="images/IMG-20250611-WA0080.jpg" alt="Momento especial 5" loading="lazy">
           </div>
 
           <div class="carousel-slide">
-            <img src="./images/IMG-20250611-WA0081.jpg" alt="Momento especial 6" loading="lazy">
+            <img src="images/IMG-20250611-WA0081.jpg" alt="Momento especial 6" loading="lazy">
           </div>
 
           <div class="carousel-slide">
-            <img src="./images/IMG-20250611-WA0082.jpg" alt="Momento especial 7" loading="lazy">
+            <img src="images/IMG-20250611-WA0082.jpg" alt="Momento especial 7" loading="lazy">
           </div>
 
           <div class="carousel-slide">
-            <img src="./images/IMG-20250611-WA0083.jpg" alt="Momento especial 8" loading="lazy">
+            <img src="images/IMG-20250611-WA0083.jpg" alt="Momento especial 8" loading="lazy">
           </div>
 
           <div class="carousel-slide">
-            <img src="./images/img1.jpg" alt="Momento especial 9" loading="lazy">
+            <img src="images/img1.jpg" alt="Momento especial 9" loading="lazy">
           </div>
 
           <div class="carousel-slide">
-            <img src="./images/img2.jpg" alt="Momento especial 10" loading="lazy">
+            <img src="images/img2.jpg" alt="Momento especial 10" loading="lazy">
           </div>
 
           <div class="carousel-slide">
-            <img src="./images/img4.jpg" alt="Momento especial 11" loading="lazy">
+            <img src="images/img4.jpg" alt="Momento especial 11" loading="lazy">
           </div>
 
           <div class="carousel-slide">
-            <img src="./images/img5.jpg" alt="Momento especial 12" loading="lazy">
+            <img src="images/img5.jpg" alt="Momento especial 12" loading="lazy">
           </div>
 
           <div class="carousel-slide">
@@ -870,6 +984,148 @@
         }
       }
     }
+
+    // Sistema de Música
+    let currentAudio = null;
+    let isPlaying = false;
+    let currentSongIndex = 0;
+
+    // Playlist romântica (URLs do YouTube convertidas ou Spotify embeds)
+    const romanticPlaylist = [
+      {
+        title: "All of Me - John Legend",
+        url: "https://www.soundjay.com/misc/sounds/romantic-music-1.mp3" // Exemplo - substitua por URLs reais
+      },
+      {
+        title: "Perfect - Ed Sheeran",
+        url: "https://www.soundjay.com/misc/sounds/romantic-music-2.mp3" // Exemplo
+      },
+      {
+        title: "Make You Feel My Love - Adele",
+        url: "https://www.soundjay.com/misc/sounds/romantic-music-3.mp3" // Exemplo
+      }
+    ];
+
+    function toggleMusic() {
+      const musicBtn = document.getElementById('musicToggle');
+      const musicIcon = document.getElementById('musicIcon');
+      const musicText = document.getElementById('musicText');
+      const musicInfo = document.getElementById('musicInfo');
+      const currentSongSpan = document.getElementById('currentSong');
+
+      if (!isPlaying) {
+        // Iniciar música
+        playCurrentSong();
+        musicIcon.textContent = '⏸️';
+        musicText.textContent = 'Pausar Música';
+        musicBtn.classList.add('playing');
+        isPlaying = true;
+      } else {
+        // Pausar música
+        if (currentAudio) {
+          currentAudio.pause();
+        }
+        musicIcon.textContent = '🎵';
+        musicText.textContent = 'Tocar Música Romântica';
+        musicBtn.classList.remove('playing');
+        isPlaying = false;
+        currentSongSpan.textContent = 'Música pausada ⏸️';
+      }
+    }
+
+    function playCurrentSong() {
+      const currentSongSpan = document.getElementById('currentSong');
+
+      // Se já existe um áudio tocando, pare-o
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio = null;
+      }
+
+      // Criar novo elemento de áudio
+      currentAudio = new Audio();
+
+      // Suas músicas favoritas
+      const testSongs = [
+        './music/everything-with-lyrics-michael-buble.mp3'
+      ];
+
+      const songTitles = [
+        'Everything - Michael Buble 💕'
+      ];
+
+      // Configurar a música atual
+      currentAudio.src = testSongs[currentSongIndex % testSongs.length];
+      currentSongSpan.textContent = `♪ ${songTitles[currentSongIndex % songTitles.length]} ♪`;
+
+      // Configurar eventos do áudio
+      currentAudio.addEventListener('ended', nextSong);
+      currentAudio.addEventListener('error', handleAudioError);
+      currentAudio.addEventListener('loadstart', () => {
+        currentSongSpan.textContent = `⏳ Carregando música...`;
+      });
+      currentAudio.addEventListener('canplay', () => {
+        currentSongSpan.textContent = `♪ Tocando: ${songTitles[currentSongIndex % songTitles.length]} ♪`;
+      });
+
+      // Definir volume padrão
+      currentAudio.volume = 0.7;
+
+      // Tentar reproduzir a música
+      currentAudio.play().then(() => {
+        console.log('Música iniciada com sucesso!');
+      }).catch((error) => {
+        console.error('Erro ao reproduzir música:', error);
+        handleAudioError();
+      });
+    }
+
+    function simulateMusic() {
+      // Esta função não é mais necessária pois agora usamos música real
+      // Removida para usar apenas áudio real
+    }
+
+    function nextSong() {
+      if (isPlaying) {
+        currentSongIndex = (currentSongIndex + 1) % 1; // Apenas 1 música por enquanto
+        playCurrentSong();
+      }
+    }
+
+    function handleAudioError() {
+      const currentSongSpan = document.getElementById('currentSong');
+      const musicBtn = document.getElementById('musicToggle');
+      const musicIcon = document.getElementById('musicIcon');
+      const musicText = document.getElementById('musicText');
+
+      console.error('Erro ao carregar/reproduzir música');
+      currentSongSpan.textContent = '⚠️ Erro ao carregar música. Verifique o arquivo.';
+
+      // Resetar o botão para estado inicial
+      musicIcon.textContent = '🎵';
+      musicText.textContent = 'Tocar Música Romântica';
+      musicBtn.classList.remove('playing');
+      isPlaying = false;
+
+      // Tentar novamente após alguns segundos (só se tiver mais de uma música)
+      setTimeout(() => {
+        if (testSongs && testSongs.length > 1) {
+          currentSongSpan.textContent = 'Tentando próxima música...';
+          nextSong();
+        } else {
+          currentSongSpan.textContent = 'Clique para tentar novamente ❤️';
+        }
+      }, 3000);
+    }
+
+    // Função para adicionar suas próprias músicas
+    function addCustomMusic(title, url) {
+      romanticPlaylist.push({ title, url });
+      console.log(`Música adicionada: ${title}`);
+    }
+
+    // Exemplo de como adicionar músicas:
+    // addCustomMusic("Sua Música Favorita", "URL_DA_MUSICA.mp3");
   </script>
 </body>
 
