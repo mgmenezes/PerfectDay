@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para o Amor da Minha Vida ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Animação de corações flutuantes */
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .heart {
+      position: absolute;
+      color: rgba(255, 182, 193, 0.8);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Container principal */
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Cabeçalho */
+    .header {
+      text-align: center;
+      margin: 40px 0;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .header h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.5rem;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 300;
+    }
+
+    /* Cards principais */
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin: 50px 0;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .card h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2rem;
+      color: #764ba2;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .card p,
+    .card li {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .card li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 10px;
+    }
+
+    .card li:before {
+      content: "💕";
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    /* Contador de tempo juntos */
+    .counter {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 40px 0;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    .counter h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      color: #764ba2;
+      margin-bottom: 30px;
+    }
+
+    .time-display {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .time-unit {
+      text-align: center;
+      min-width: 100px;
+    }
+
+    .time-number {
+      font-size: 3rem;
+      font-weight: 600;
+      color: #667eea;
+      display: block;
+    }
+
+    .time-label {
+      font-size: 1rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Botão especial */
+    .special-button {
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    .btn-love {
+      background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+      color: white;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+    }
+
+    .btn-love:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
+    }
+
+    /* Modal de surpresa */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 500px;
+      margin: 20px;
+      animation: modalAppear 0.5s ease-out;
+    }
+
+    @keyframes modalAppear {
+      from {
+        opacity: 0;
+        transform: scale(0.7);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .modal h3 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      color: #764ba2;
+      margin-bottom: 20px;
+    }
+
+    .modal p {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .close-modal {
+      background: #764ba2;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    /* Animações */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2.5rem;
+      }
+
+      .cards-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .time-display {
+        gap: 15px;
+      }
+
+      .time-number {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+  <!-- Corações flutuantes -->
+  <div class="hearts" id="hearts"></div>
+
+  <div class="container">
+    <!-- Cabeçalho -->
+    <div class="header">
+      <h1>Para o Amor da Minha Vida</h1>
+      <p>Um site especial criado com todo meu amor ❤️</p>
+    </div>
+
+    <!-- Contador de tempo juntos -->
+    <div class="counter">
+      <h2>Nosso Tempo Juntos</h2>
+      <div class="time-display" id="timeDisplay">
+        <div class="time-unit">
+          <span class="time-number" id="days">0</span>
+          <span class="time-label">Dias</span>
+        </div>
+        <div class="time-unit">
+          <span class="time-number" id="hours">0</span>
+          <span class="time-label">Horas</span>
+        </div>
+        <div class="time-unit">
+          <span class="time-number" id="minutes">0</span>
+          <span class="time-label">Minutos</span>
+        </div>
+        <div class="time-unit">
+          <span class="time-number" id="seconds">0</span>
+          <span class="time-label">Segundos</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards principais -->
+    <div class="cards-container">
+      <div class="card">
+        <h2>Razões para Te Amar</h2>
+        <ul>
+          <li>Seu sorriso ilumina meus dias</li>
+          <li>Sua risada é minha música favorita</li>
+          <li>Você me faz querer ser uma pessoa melhor</li>
+          <li>Cada momento ao seu lado é especial</li>
+          <li>Você é minha melhor amiga e amor da vida</li>
+          <li>Sua forma carinhosa de cuidar de mim</li>
+          <li>Como você me apoia em tudo</li>
+          <li>Você torna cada dia uma aventura</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Nossos Momentos Especiais</h2>
+        <p>💕 <strong>Primeiro encontro:</strong> Ainda lembro como se fosse ontem</p>
+        <p>🌹 <strong>Primeiro "eu te amo":</strong> As palavras mais bonitas já ditas</p>
+        <p>💍 <strong>Nosso noivado:</strong> O dia que selamos nosso futuro juntos</p>
+        <p>🏠 <strong>Nossa casa:</strong> Onde construímos nosso lar</p>
+        <p>✈️ <strong>Nossas viagens:</strong> Aventuras que vivemos lado a lado</p>
+        <p>🎉 <strong>Comemorações:</strong> Cada data especial é mais especial com você</p>
+      </div>
+
+      <div class="card">
+        <h2>Meus Sonhos com Você</h2>
+        <ul>
+          <li>Viajarmos pelo mundo juntos</li>
+          <li>Construirmos nossa família</li>
+          <li>Envelhecermos de mãos dadas</li>
+          <li>Continuarmos rindo juntos todos os dias</li>
+          <li>Realizarmos todos os nossos sonhos</li>
+          <li>Criarmos milhões de memórias especiais</li>
+          <li>Sermos felizes para sempre</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Para Você, Meu Amor</h2>
+        <p>Este site foi criado especialmente para você, com todo meu carinho e dedicação. Cada linha de código foi
+          escrita pensando no quanto você é especial para mim.</p>
+        <p>Você não é apenas minha esposa, é minha companheira de vida, minha melhor amiga, minha inspiração diária.</p>
+        <p>Obrigado por estar ao meu lado em cada desafio, por acreditar em meus sonhos e por tornar minha vida muito
+          mais colorida e feliz.</p>
+        <p><strong>Eu te amo infinitamente! ❤️</strong></p>
+      </div>
+    </div>
+
+    <!-- Botão especial -->
+    <div class="special-button">
+      <button class="btn-love" onclick="showSurprise()">
+        Clique para uma Surpresa Especial! 💕
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal de surpresa -->
+  <div class="modal" id="surpriseModal">
+    <div class="modal-content">
+      <h3>Surpresa Especial!</h3>
+      <p>🌹 Este é apenas o começo das surpresas que preparei para você neste Dia dos Namorados!</p>
+      <p>💕 Prepare-se para um dia cheio de amor, carinho e momentos inesquecíveis!</p>
+      <p>❤️ Você é a pessoa mais importante da minha vida e merece todo amor do mundo!</p>
+      <button class="close-modal" onclick="closeSurprise()">Fechar</button>
+    </div>
+  </div>
+
+  <script>
+
+    const startDate = new Date('2023-08-25');
+
+    function updateCounter() {
+      const now = new Date();
+      const diff = now - startDate;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+      document.getElementById('seconds').textContent = seconds;
+    }
+
+    // Atualizar contador a cada segundo
+    setInterval(updateCounter, 1000);
+    updateCounter();
+
+    // Criar corações flutuantes
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+      heart.style.animationDuration = (Math.random() * 3 + 6) + 's';
+
+      document.getElementById('hearts').appendChild(heart);
+
+      // Remover coração após animação
+      setTimeout(() => {
+        heart.remove();
+      }, 9000);
+    }
+
+    // Criar corações periodicamente
+    setInterval(createHeart, 3000);
+
+    // Função da surpresa especial
+    function showSurprise() {
+      document.getElementById('surpriseModal').style.display = 'flex';
+    }
+
+    function closeSurprise() {
+      document.getElementById('surpriseModal').style.display = 'none';
+    }
+
+    // Fechar modal clicando fora
+    document.getElementById('surpriseModal').onclick = function (e) {
+      if (e.target === this) {
+        closeSurprise();
+      }
+    }
+
+    // Inicializar alguns corações na tela
+    for (let i = 0; i < 5; i++) {
+      setTimeout(createHeart, i * 1000);
+    }
+  </script>
+</body>
+
+</html>
